@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>API Request Results</title>
+    <link rel="stylesheet" href="../static/table.css">
+</head>
+
+<body>
+    <table class="mytable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if counts == 0 :%}
+            <div class="not-match">
+                <h1>Sorry, there is no matched result. Please try again!</h1>
+            </div>
+            {% endif %}
+
+            {% for i in range(0, counts) %}
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ basics[i]['first_name'] }}</td>
+                <td>{{ basics[i]['last_name'] }}</td>
+                <td>{{ addresses[i]['address_1'] + ", " + addresses[i]['city'] + ", " + addresses[i]['state'] + " " +
+                    addresses[i]['postal_code'][0:5]}}</td>
+                <td>{{ addresses[i]['telephone_number'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="mainpagebutton">
+        <a href="/">Back to search page</a>
+    </div>
+
+</body>
+
+</html>

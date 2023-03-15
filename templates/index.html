@@ -2,15 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Healthcare Provider Searching</title>
+    <link rel="stylesheet" type="text/css" href="../static/searching.css">
 </head>
 
-<body>
+<body class="container">
+    <h1>Search your Healthcare Provider</h1>
     <div>
-        Hello World
+        <form method="POST" action="/get-data">
+            <div class="filled_line">
+                <label>Last Name <span style="color: red;">*</span>: </label>
+                <input type="text" name="last_name" required>
+                <br>
+            </div>
+            <div class="filled_line">
+                <label>First Name : </label>
+                <input type="text" name="first_name">
+                <br>
+            </div>
+            <div class="filled_line">
+                <label>City : </label>
+                <input type="text" name="city">
+                <br>
+            </div>
+            <div class="filled_line">
+                <label>State : </label>
+                <input type="text" name="state">
+                <br>
+            </div>
+            <div>
+                <button class="search_button" type="submit">Search</button>
+            </div>
+        </form>
     </div>
 </body>
 
