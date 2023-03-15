@@ -10,8 +10,8 @@
     <table class="mytable">
         <thead>
             <tr>
-                <th>#</th>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
                 <th>Phone</th>
@@ -20,20 +20,38 @@
         <tbody>
             {% if counts == 0 :%}
             <div class="not-match">
-                <h1>Sorry, there is no matched result. Please try again!</h1>
+                <h1>Sorry, there is no matched result. Please try again! Top</h1>
             </div>
-            {% endif %}
+            {% else %}
+
+            {% set count = [] %}
 
             {% for i in range(0, counts) %}
+
+            {% if search_provider['lastname'].upper() == basics[i]['last_name']: %}
+            {% if search_provider['firstname'] == "" or search_provider['firstname'].upper() == basics[i]['first_name']:
+            %}
+
             <tr>
-                <td>{{ i + 1 }}</td>
                 <td>{{ basics[i]['first_name'] }}</td>
+                <td>{{ basics[i]['middle_name'] }}</td>
                 <td>{{ basics[i]['last_name'] }}</td>
                 <td>{{ addresses[i]['address_1'] + ", " + addresses[i]['city'] + ", " + addresses[i]['state'] + " " +
                     addresses[i]['postal_code'][0:5]}}</td>
                 <td>{{ addresses[i]['telephone_number'] }}</td>
             </tr>
+            {% set printed = count.append(1) %}
+            {% endif %}
+            {% endif %}
             {% endfor %}
+
+            {% if count|length == 0: %}
+            <div class="not-match">
+                <h1>Sorry, there is no matched result. Please try again! Afterprint</h1>
+            </div>
+            {% endif %}
+            {% endif %}
+
         </tbody>
     </table>
     <div class="mainpagebutton">
