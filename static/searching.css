@@ -25,6 +25,7 @@ form {
 label {
     width: 150px;
     float: left;
+    text-align: right;
 }
 
 input {
